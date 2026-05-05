@@ -22,7 +22,9 @@ a = arduino("/dev/cu.usbserial-1310","Uno");
 % Insert answers here
 
 %acquisition time in s
-duration = 600;
+duration = 30;
+
+fprintf("Start logging");
 
 %create arrays, number of samples should be duration+1
 time = zeros(duration+1,1);
@@ -46,6 +48,8 @@ for i = 1:duration+1
     %convert voltage to temperature
     temperature(i) = (voltage(i) - 0.5) * 100;
 end
+
+fprintf("Finish logging");
 
 %calculate the required statistics
 Temp_min = min(temperature);
