@@ -29,9 +29,6 @@ time = zeros(duration+1,1);
 voltage = zeros(duration+1,1);
 temperature = zeros(duration+1,1);
 
-fprintf('starting');
-
-
 %read voltage and convert to temperature and then store them
 for i = 1:duration+1
     time(i) = i - 1;
