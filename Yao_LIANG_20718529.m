@@ -29,6 +29,9 @@ time = zeros(duration+1,1);
 voltage = zeros(duration+1,1);
 temperature = zeros(duration+1,1);
 
+fprintf('starting');
+
+
 %read voltage and convert to temperature and then store them
 for i = 1:duration+1
     time(i) = i - 1;
@@ -83,7 +86,7 @@ max_text = sprintf('Max temp\t%.2f C\n',Temp_max);
 min_text = sprintf('Min temp\t%.2f C\n',Temp_min);
 avg_text = sprintf('Average temp\t%.2f C\n\n',Temp_avg);
 
-statistics = [max_text,min_text,avg_text,'Data logging terminated\n'];
+statistics = [max_text,min_text,avg_text,'Data logging terminated'];
 fprintf('%s',statistics);
 
 %save info in txt
