@@ -30,21 +30,34 @@ voltage = zeros(duration+1,1);
 temperature = zeros(duration+1,1);
 
 %read voltage and convert to temperature and then store them
+count = 20;
+
 for i = 1:duration+1
+    %start timer
+    loop_start = tic;
     time(i) = i - 1;
 
-    %read the voltage 20 times within 1 second
-    voltage_samples = zeros(20,1);
-    for k = 1:20
+    %read voltage 20 times as fast as possible
+    voltage_samples = zeros(count,1);
+
+    for k = 1:count
         voltage_samples(k) = readVoltage(a,"A5");
-        pause(0.05);
     end
-    
+
     %use the average voltage as the recorded value for this second
     voltage(i) = mean(voltage_samples);
 
     %convert voltage to temperature
     temperature(i) = (voltage(i) - 0.5) * 100;
+
+    %make each loop take approximately 1 second
+    time_taken = toc(loop_start);
+    pause_time = 1 - time_taken;
+
+    if pause_time > 0
+        pause(pause_time);
+    end
+
 end
 
 %calculate the required statistics
