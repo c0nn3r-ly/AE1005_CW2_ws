@@ -3,7 +3,7 @@
 %predict temperature in 5 minutes. This function is designed using arduino
 %UNO and MCP9700AE thermistor. It log 20 voltage readings each one-second
 %cycle, converts the result to temperature, and store the real-time data for each second.
-%It calculate 30 changing rate with the 60 newest data. Then the rates are
+%It calculate 30 changing rate with the 60 newest data(can be changed). Then the rates are
 %averaged and used to predict the temperature. GreenLED will be on when
 %rate is around -4 C/min to 4. When rate is smaller than -4 C/min, YellowLED
 %will be on. When rate is bigger than 4 C/min, RedLED will be on.
