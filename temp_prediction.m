@@ -54,15 +54,15 @@ while true
 
     %calculate rate when enough data has been stored
     if length(temperature) >= window_size
-        %select the newest 60 data
+        %select the newest window_size data
         newest_time = time(end-window_size+1:end);
 
         newest_temperature = temperature(end-window_size+1:end);
 
-        %calculate 30 rates using 60 data
-        rates = zeros(30,1);
-        for n = 1:30
-            rates(n) = (newest_temperature(n+30) - newest_temperature(n)) / (newest_time(n+30) - newest_time(n));
+        %calculate window_size/s rates using window_size data
+        rates = zeros(window_size/2,1);
+        for n = 1:window_size/2
+            rates(n) = (newest_temperature(n+window_size/s) - newest_temperature(n)) / (newest_time(n+window_size/2) - newest_time(n));
         end
 
         %calculate the average rate and convert it from C/s to C/min
