@@ -123,11 +123,11 @@ a = arduino("/dev/cu.usbserial-1310","Uno");
 %% TASK 2 - LED TEMPERATURE MONITORING DEVICE IMPLEMENTATION [25 MARKS]
 
 % Insert answers here
-temp_monitor(a);
+% temp_monitor(a);
 %% TASK 3 - ALGORITHMS – TEMPERATURE PREDICTION [30 MARKS]
 
 % Insert answers here
-
+temp_prediction(a);
 
 %% TASK 4 - REFLECTIVE STATEMENT [5 MARKS]
 
