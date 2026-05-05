@@ -35,12 +35,19 @@ fprintf('starting');
 %read voltage and convert to temperature and then store them
 for i = 1:duration+1
     time(i) = i - 1;
-    %read the voltage from sensor on arduino
-    voltage(i) = readVoltage(a,"A5");
+
+    %read the voltage 20 times within 1 second
+    voltage_samples = zeros(20,1);
+    for k = 1:20
+        voltage_samples(k) = readVoltage(a,"A5");
+        pause(0.05);
+    end
+    
+    %use the average voltage as the recorded value for this second
+    voltage(i) = mean(voltage_samples);
+
     %convert voltage to temperature
     temperature(i) = (voltage(i) - 0.5) * 100;
-
-    pause(1);
 end
 
 %calculate the required statistics
